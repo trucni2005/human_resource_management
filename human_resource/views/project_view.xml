@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="human_resource_project_act_window" model="ir.actions.act_window">
+        <field name="name">Projects View Form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">human_resource.project</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Định nghĩa chế độ xem cây cho đối tượng human_resource.employee -->
+    <record id="human_resource_employee_tree_view" model="ir.ui.view">
+        <field name="name">human_resource.employee.tree</field>
+        <field name="model">human_resource.employee</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="employee_id" string="Mã Nhân Viên"/>
+                <field name="full_name" string="Họ và Tên"/>
+                <field name="date_of_birth" string="Ngày Sinh"/>
+                <field name="job_position" string="Vị Trí Công Việc"/>
+                <field name="email" string="Email"/>
+                <field name="mobile" string="Số Điện Thoại"/>
+                <field name="department_code" string="Mã Bộ Phận"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Cập nhật hành động cửa sổ để sử dụng chế độ xem cây mới -->
+    <record id="human_resource_employee_act_window" model="ir.actions.act_window">
+        <field name="name">Danh sách thông tin nhân viên</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">human_resource.employee</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="human_resource_employee_tree_view" />
+    </record>
+</odoo>
