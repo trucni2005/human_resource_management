@@ -5,7 +5,8 @@
         <field name="model">human_resource.salary</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="employee_id" string="Nhân viên"/>
+                <field name="employee_id" string="Mã nhân viên"/>
+                <field name="employee_name" string="Tên nhân viên"/>
                 <field name="month" string="Tháng"/>
                 <field name="basic_salary" string="Mức lương cơ bản"/>
                 <field name="responsibility_allowance" string="Phụ cấp trách nhiệm"/>
@@ -15,11 +16,8 @@
                 <field name="social_insurance" string="Bảo hiểm xã hội"/>
                 <field name="other_benefits" string="Các chế độ được hưởng"/>
                 <field name="termination_agreement" string="Thỏa thuận khác"/>
-                <field name="overtime_hours" string="Số giờ làm thêm"/>
-                <field name="overtime_rate" string="Mức lương làm thêm"/>
                 <field name="overtime_income" string="Thu nhập từ làm thêm"/>
                 <field name="total_income" string="Tổng thu nhập"/>
-                <field name="deductions" string="Khấu trừ"/>
                 <field name="net_income" string="Thu nhập ròng"/>
             </tree>
         </field>

@@ -21,25 +21,31 @@
               action="employee_contract_act_window"
               sequence="10"></menuitem>
 
+    <menuitem id="menu_human_resource_department"
+              name="Phòng ban"
+              parent="menu_human_resource_root"
+              action="department_act_window"
+              sequence="10"></menuitem>
+
     <menuitem id="menu_human_resource_project"
               name="Dự án"
               parent="menu_human_resource_root"
               sequence="10"></menuitem>
 
     <menuitem id="menu_human_resource_projects"
-              name="Project List"
+              name="Danh sách dự án"
               parent="menu_human_resource_project"
               action="human_resource_project_act_window"
               sequence="10"></menuitem>
 
     <menuitem id="menu_task"
-              name="Task List"
+              name="Danh sách nhiệm vụ"
               parent="menu_human_resource_project"
               action="human_resource_project_task_act_window"
               sequence="10"></menuitem>
 
     <menuitem id="menu_human_resource_timesheets"
-              name="Quản Lý Thời Gian Làm Việc"
+              name="Thời Gian Làm Việc"
               parent="menu_human_resource_root"
               sequence="10"></menuitem>
 

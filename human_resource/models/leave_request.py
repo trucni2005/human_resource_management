@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 
 
 class LeaveRequest(models.Model):
@@ -27,3 +27,4 @@ class LeaveRequest(models.Model):
         ('approved', 'Đã Chấp Nhận'),
         ('rejected', 'Từ Chối'),
     ], string='Trạng Thái', default='draft', required=True)
+

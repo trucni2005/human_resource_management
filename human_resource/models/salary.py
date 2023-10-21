@@ -5,7 +5,13 @@ class Salary(models.Model):
     _name = 'human_resource.salary'
     _description = 'Bảng lương nhân viên'
 
-    employee_id = fields.Many2one('human_resource.employment_contract', string='Hợp đồng', required=True, help="Chọn hợp đồng liên quan.")
+    employee_id = fields.Many2one('human_resource.employment_contract', string='Mã nhân viên', required=True, help="Chọn mã nhân viên!")
+
+    employee_name = fields.Char(string='Họ và tên', help="Nhập họ và tên", related='employee_id.employee_name', store=True)
+
+    contract_code = fields.Char(string='Mã hợp đồng', help="Nhập mã hợp đồng hoặc tham chiếu.",
+                                related='employee_id.contract_code', store=True)
+
     month = fields.Char(string='Tháng', required=True)
     basic_salary = fields.Float(string='Mức lương cơ bản', related='employee_id.basic_salary')
     responsibility_allowance = fields.Float(string='Phụ cấp trách nhiệm',

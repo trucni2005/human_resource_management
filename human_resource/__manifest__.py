@@ -16,6 +16,7 @@
         'views/employment_contract.xml',
         'views/project_view.xml',
         'views/task.xml',
+        'views/department.xml',
         'views/attendance.xml',
         'views/leave_request.xml',
         'security/ir.model.access.csv',

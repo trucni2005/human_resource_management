@@ -5,15 +5,26 @@ class EmploymentContract(models.Model):
     _name = 'human_resource.employment_contract'
     _description = 'Quản lý Hợp đồng lao động'
 
-    employee_id = fields.Many2one('human_resource.employee', string='Nhân viên', required=False,
-                                  help="Chọn nhân viên cho hợp đồng này.", ondelete='set null')
+    employee_id = fields.Many2one('human_resource.employee', string='Mã nhân viên', required=False,
+                                  help="Chọn nhân viên cho hợp đồng này")
 
-    employee_name = fields.Char(string='Họ và tên', help="Nhập họ và tên")
-    contract_code = fields.Char(string='Mã hợp đồng', required=True, help="Nhập mã hợp đồng hoặc tham chiếu.")
+    employee_name = fields.Char(string='Họ và tên', help="Nhập họ và tên", related='employee_id.full_name', store=True)
+
+    contract_code = fields.Char(string='Mã hợp đồng', help="Nhập mã hợp đồng hoặc tham chiếu.",
+                                related='employee_id.contract_code', store=True)
+
+    _sql_constraints = [
+        ('employee_id_uniq', 'unique (employee_id)', 'Mã Nhân viên phải là duy nhất!'),
+    ]
+
+    _order = 'employee_id'
+
+    _rec_name = 'employee_id'
+
     start_date = fields.Date(string='Ngày bắt đầu', help="Nhập ngày bắt đầu của hợp đồng.")
     end_date = fields.Date(string='Ngày kết thúc', help="Nhập ngày kết thúc của hợp đồng, nếu có.")
-    job_position = fields.Char(string='Vị trí công việc', help="Nhập vị trí công việc cho nhân viên.")
-    department_code = fields.Char(string='Mã bộ phận', help="Nhập mã bộ phận, nếu có.")
+    job_position = fields.Char(string='Vị trí công việc', help="Nhập vị trí công việc cho nhân viên.", related='employee_id.job_position', store=True)
+    department_code = fields.Char(string='Mã bộ phận', help="Nhập mã bộ phận, nếu có.", related='employee_id.department_code', store=True)
     termination_date = fields.Date(string='Ngày chấm dứt',
                                    help="Nhập ngày chấm dứt hợp đồng, nếu có.")
     termination_reason = fields.Text(string='Lý do chấm dứt',
@@ -27,6 +38,14 @@ class EmploymentContract(models.Model):
         string='Loại Hợp đồng lao động', help="Chọn loại hợp đồng lao động.")
     work_location = fields.Char(string='Địa điểm làm việc', help="Nhập địa điểm làm việc của nhân viên.")
     job_description = fields.Text(string='Nhiệm vụ công việc', help="Mô tả nhiệm vụ công việc của nhân viên.")
+
+    morning_start_time = fields.Float(string='Giờ bắt đầu làm buổi sáng',
+                                      help="Giờ bắt đầu làm việc vào buổi sáng (VD: 7.00).")
+    lunch_break_time = fields.Float(string='Giờ nghỉ trưa', help="Giờ nghỉ trưa (VD: 11.30).")
+    afternoon_start_time = fields.Float(string='Giờ bắt đầu làm buổi chiều',
+                                        help="Giờ bắt đầu làm việc vào buổi chiều (VD: 13.30).")
+    evening_end_time = fields.Float(string='Giờ tan làm buổi chiều',
+                                    help="Giờ kết thúc làm việc vào buổi chiều (VD: 17.30).")
 
     # salary
     basic_salary = fields.Float(string='Mức lương chính', help='Nhập mức lương chính (VNĐ/tháng).')
@@ -59,4 +78,3 @@ class EmploymentContract(models.Model):
                                   help="Số tiền hoặc các giá trị khác liên quan đến chế độ và quyền lợi.")
     termination_agreement = fields.Float(string='Thỏa thuận khác',
                                          help="Số tiền hoặc các giá trị khác liên quan đến thỏa thuận chấm dứt hợp đồng lao động.")
-
